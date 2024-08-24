@@ -4,7 +4,11 @@ import { setUser } from "../reducer/userSlice";
 import { useNavigate } from "react-router-dom";
 import React from 'react';
 
-export const LoginPage = () => {
+interface LoginPageProps {
+  redirectPath?: string | null;
+}
+
+export const LoginPage: React.FC<LoginPageProps> = ({ redirectPath }) => {
   const navigate = useNavigate();
   const users = useAppSelector((store) => store.user.users);
   const dispatch = useAppDispatch();
@@ -13,7 +17,7 @@ export const LoginPage = () => {
     const selectedUser = users.find(x => x.id === userId);
     if (selectedUser) {
       dispatch(setUser(selectedUser));
-      navigate("/home");
+      navigate(redirectPath || "/home"); // Navigate to the intended page or home
     }
   };
 

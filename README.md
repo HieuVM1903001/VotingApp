@@ -8,6 +8,16 @@ Leaderboard: Displays user rankings based on their participation.
 Routing: Seamless navigation through the app with protected routes.
 Responsive UI: Designed using Ant Design components to ensure a responsive and modern user interface.
 
+Installation
+
+npm install
+
+Start the development server:
+
+npm start
+
+The app should now be running on http://localhost:3000.
+
 Usage
 Login: Select a user from the dropdown on the login page to access the app.
 Home Page: View unanswered and answered questions. Click on a question to answer it or view the results.

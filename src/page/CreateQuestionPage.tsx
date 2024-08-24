@@ -2,8 +2,10 @@ import { Button, Input, Typography, message } from "antd";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { getAllQuestions, saveQuestion } from "../reducer/questionSlice";
+import { useNavigate } from "react-router-dom";
 
 export const CreateQuestionPage = () => {
+  const navigate = useNavigate();
   const [option1, setOption1] = useState("");
   const [option2, setOption2] = useState("");
   const dispatch = useAppDispatch();
@@ -19,6 +21,7 @@ export const CreateQuestionPage = () => {
     setOption1("");
     setOption2("");
     message.success("Question created successfully!");
+    navigate("/home")
   };
 
   return (

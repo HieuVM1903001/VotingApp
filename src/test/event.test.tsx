@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { saveQuestion, getAllQuestions } from '../reducer/questionSlice';
 import { message } from 'antd';
 import { CreateQuestionPage } from '../page/CreateQuestionPage';
+import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
 
 // Mock hooks and Ant Design message component
 jest.mock('../app/hooks', () => ({
@@ -33,8 +34,12 @@ describe('CreateQuestionPage Component', () => {
     (useAppSelector as jest.Mock).mockReturnValue({ id: 'sarahedo' });
   });
 
+  const renderWithRouter = (ui: React.ReactElement) => {
+    return render(<BrowserRouter>{ui}</BrowserRouter>);
+  };
+
   test('should display error message if either option is empty', () => {
-    render(<CreateQuestionPage />);
+    renderWithRouter(<CreateQuestionPage />);
 
     fireEvent.click(screen.getByText('Submit Question'));
 
@@ -42,7 +47,7 @@ describe('CreateQuestionPage Component', () => {
   });
 
   test('should dispatch saveQuestion and getAllQuestions on submit', () => {
-    render(<CreateQuestionPage />);
+    renderWithRouter(<CreateQuestionPage />);
 
     fireEvent.change(screen.getByPlaceholderText('Enter Option One'), {
       target: { value: 'Option 1' },
@@ -67,7 +72,7 @@ describe('CreateQuestionPage Component', () => {
   });
 
   test('should clear input fields after successful submission', () => {
-    render(<CreateQuestionPage />);
+    renderWithRouter(<CreateQuestionPage />);
 
     const input1 = screen.getByPlaceholderText('Enter Option One');
     const input2 = screen.getByPlaceholderText('Enter Option Two');
