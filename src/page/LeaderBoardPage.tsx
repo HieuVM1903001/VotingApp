@@ -4,10 +4,13 @@ import { User } from "../utils/model";
 
 export const LeaderBoardPage = () => {
   const users = useAppSelector((store) => store.user.users);
+
   const rank = (user: User): number => {
     return user.questions.length + Object.keys(user.answers).length;
   };
+
   const sortedUsers = [...users].sort((a, b) => rank(b) - rank(a));
+
   return (
     <List
       dataSource={sortedUsers}
@@ -21,7 +24,13 @@ export const LeaderBoardPage = () => {
                   src={item.avatarURL || undefined}
                   alt="Avatar"
                   width={50}
-                  style={{ marginRight: 16 }}
+                  height={50} 
+                  style={{ 
+                    marginRight: 16, 
+                    objectFit: "cover",  
+                    borderRadius: "50%", 
+                    overflow: "hidden"  
+                  }}
                 />
                 <Typography.Text>{item.name}</Typography.Text>
               </div>

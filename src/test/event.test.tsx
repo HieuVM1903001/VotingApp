@@ -4,9 +4,8 @@ import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { saveQuestion, getAllQuestions } from '../reducer/questionSlice';
 import { message } from 'antd';
 import { CreateQuestionPage } from '../page/CreateQuestionPage';
-import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+import { BrowserRouter } from 'react-router-dom'; 
 
-// Mock hooks and Ant Design message component
 jest.mock('../app/hooks', () => ({
   useAppDispatch: jest.fn(),
   useAppSelector: jest.fn(),

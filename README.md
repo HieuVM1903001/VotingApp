@@ -9,6 +9,11 @@ Routing: Seamless navigation through the app with protected routes.
 Responsive UI: Designed using Ant Design components to ensure a responsive and modern user interface.
 
 Installation
+Clone the repository:
+
+git clone https://github.com/HieuVM1903001/VotingApp.git
+
+Install dependencies:
 
 npm install
 

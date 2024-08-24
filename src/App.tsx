@@ -33,7 +33,6 @@ const { Sider, Content } = Layout;
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const [selectedPage, setSelectedPage] = useState(['login']);
   const [messageApi, contextHolder] = message.useMessage();
   const [redirectPath, setRedirectPath] = useState<string | null>(null);
 
@@ -47,12 +46,10 @@ const App: React.FC = () => {
   const logOut = () => {
     dispatch(setUser(undefined));
     navigate('/');
-    setSelectedPage(['login']);
     setRedirectPath(null);
   };
 
   const error = (path: string) => {
-    setSelectedPage(['login']);
     setRedirectPath(path); // Save the path user attempted to access
     console.log({path})
     messageApi.open({
